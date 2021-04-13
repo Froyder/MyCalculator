@@ -14,6 +14,8 @@ public class MainActivity extends AppCompatActivity {
             plus, minus, mult, div, cancel, delete, dot, eqls;
     TextView textView;
 
+    String firstNumber, operator, secondNumber, result;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -24,6 +26,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void initView() {
+
         firstNumber = "";
         secondNumber = "";
         operator = "";
@@ -51,8 +54,16 @@ public class MainActivity extends AppCompatActivity {
         //editText = findViewById(R.id.editTextNumber);
         textView = findViewById(R.id.textField);
 
+        one.setOnClickListener(button1ClickListener);
+        two.setOnClickListener(button2ClickListener);
+        three.setOnClickListener(button3ClickListener);
         four.setOnClickListener(button4ClickListener);
         five.setOnClickListener(button5ClickListener);
+        six.setOnClickListener(button6ClickListener);
+        seven.setOnClickListener(button7ClickListener);
+        eight.setOnClickListener(button8ClickListener);
+        nine.setOnClickListener(button9ClickListener);
+        zero.setOnClickListener(button0ClickListener);
 
         plus.setOnClickListener(buttonPlusClickListener);
         minus.setOnClickListener(buttonMinusClickListener);
@@ -65,7 +76,36 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    String firstNumber, operator, secondNumber, result;
+    public View.OnClickListener button1ClickListener = v -> {
+        if (operator.equals("")) {
+            firstNumber = firstNumber + "1";
+            textView.setText(firstNumber);
+        } else {
+            secondNumber = secondNumber + "1";
+            textView.setText(firstNumber + operator + secondNumber);
+        }
+    };
+
+    public View.OnClickListener button2ClickListener = v -> {
+        if (operator.equals("")) {
+            firstNumber = firstNumber + "2";
+            textView.setText(firstNumber);
+        } else {
+            secondNumber = secondNumber + "2";
+            textView.setText(firstNumber + operator + secondNumber);
+        }
+    };
+
+    public View.OnClickListener button3ClickListener = v -> {
+        if (operator.equals("")) {
+            firstNumber = firstNumber + "3";
+            textView.setText(firstNumber);
+        } else {
+            secondNumber = secondNumber + "3";
+            textView.setText(firstNumber + operator + secondNumber);
+        }
+    };
+
     public View.OnClickListener button4ClickListener = v -> {
         if (operator.equals("")) {
             firstNumber = firstNumber + "4";
@@ -75,6 +115,7 @@ public class MainActivity extends AppCompatActivity {
             textView.setText(firstNumber + operator + secondNumber);
         }
     };
+
     public View.OnClickListener button5ClickListener = v -> {
         if (operator.equals("")) {
             firstNumber = firstNumber + "5";
@@ -84,6 +125,57 @@ public class MainActivity extends AppCompatActivity {
             textView.setText(firstNumber + operator + secondNumber);
         }
     };
+
+    public View.OnClickListener button6ClickListener = v -> {
+        if (operator.equals("")) {
+            firstNumber = firstNumber + "6";
+            textView.setText(firstNumber);
+        } else {
+            secondNumber = secondNumber + "6";
+            textView.setText(firstNumber + operator + secondNumber);
+        }
+    };
+
+    public View.OnClickListener button7ClickListener = v -> {
+        if (operator.equals("")) {
+            firstNumber = firstNumber + "7";
+            textView.setText(firstNumber);
+        } else {
+            secondNumber = secondNumber + "7";
+            textView.setText(firstNumber + operator + secondNumber);
+        }
+    };
+
+    public View.OnClickListener button8ClickListener = v -> {
+        if (operator.equals("")) {
+            firstNumber = firstNumber + "8";
+            textView.setText(firstNumber);
+        } else {
+            secondNumber = secondNumber + "8";
+            textView.setText(firstNumber + operator + secondNumber);
+        }
+    };
+
+    public View.OnClickListener button9ClickListener = v -> {
+        if (operator.equals("")) {
+            firstNumber = firstNumber + "9";
+            textView.setText(firstNumber);
+        } else {
+            secondNumber = secondNumber + "9";
+            textView.setText(firstNumber + operator + secondNumber);
+        }
+    };
+
+    public View.OnClickListener button0ClickListener = v -> {
+        if (operator.equals("")) {
+            firstNumber = firstNumber + "0";
+            textView.setText(firstNumber);
+        } else {
+            secondNumber = secondNumber + "0";
+            textView.setText(firstNumber + operator + secondNumber);
+        }
+    };
+
     public View.OnClickListener buttonDotClickListener = v -> {
         if (operator.equals("")) {
             firstNumber = firstNumber + ".";
