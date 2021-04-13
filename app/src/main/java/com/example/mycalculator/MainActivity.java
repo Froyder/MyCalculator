@@ -14,12 +14,13 @@ public class MainActivity extends AppCompatActivity {
             plus, minus, mult, div, cancel, delete, dot, eqls;
     TextView textView;
 
-    String firstNumber, operator, secondNumber, result;
+    String firstNumber, operator, secondNumber;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        getSupportActionBar().hide();
 
         initView();
 
@@ -30,7 +31,6 @@ public class MainActivity extends AppCompatActivity {
         firstNumber = "";
         secondNumber = "";
         operator = "";
-        result = "";
 
         zero = findViewById(R.id.button_0);
         one = findViewById(R.id.button_1);
