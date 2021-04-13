@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -13,6 +14,7 @@ public class MainActivity extends AppCompatActivity {
         Button zero, one, two, three, four, five, six, seven, eight, nine,
                 plus, minus, mult, div, cancel, delete, dot, eqls;
         EditText editText;
+        TextView textView;
 
         String firstNumber, operator, secondNumber, result;
 
@@ -50,7 +52,8 @@ public class MainActivity extends AppCompatActivity {
         dot = findViewById(R.id.button_dot);
         delete = findViewById(R.id.button_delete);
 
-        editText = findViewById(R.id.editTextNumber);
+        //editText = findViewById(R.id.editTextNumber);
+        textView = findViewById(R.id.textField);
 
         four.setOnClickListener(button4ClickListener);
         five.setOnClickListener(button5ClickListener);
@@ -69,37 +72,37 @@ public class MainActivity extends AppCompatActivity {
     public View.OnClickListener button4ClickListener = v -> {
         if (operator.equals("")) {
             firstNumber = firstNumber + "4";
-            editText.setText(firstNumber);
+            textView.setText(firstNumber);
         } else {
             secondNumber = secondNumber + "4";
-            editText.setText(firstNumber + operator + secondNumber);
+            textView.setText(firstNumber + operator + secondNumber);
         }
     };
 
     public View.OnClickListener button5ClickListener = v -> {
         if (operator.equals("")) {
             firstNumber = firstNumber + "5";
-            editText.setText(firstNumber);
+            textView.setText(firstNumber);
         } else {
             secondNumber = secondNumber + "5";
-            editText.setText(firstNumber + operator + secondNumber);
+            textView.setText(firstNumber + operator + secondNumber);
         }
     };
 
     public View.OnClickListener buttonDotClickListener = v -> {
         if (operator.equals("")) {
             firstNumber = firstNumber + ".";
-            editText.setText(firstNumber);
+            textView.setText(firstNumber);
         } else {
             secondNumber = secondNumber + ".";
-            editText.setText(firstNumber + operator + secondNumber);
+            textView.setText(firstNumber + operator + secondNumber);
         }
     };
 
     public View.OnClickListener buttonPlusClickListener = v -> {
         if (!firstNumber.equals("") && operator.equals("")) {
             operator = "+";
-            editText.setText(firstNumber + operator);
+            textView.setText(firstNumber + operator);
         } else {
         }
     };
@@ -107,7 +110,7 @@ public class MainActivity extends AppCompatActivity {
     public View.OnClickListener buttonMinusClickListener = v -> {
         if (!firstNumber.equals("") && operator.equals("")) {
             operator = "-";
-            editText.setText(firstNumber + operator);
+            textView.setText(firstNumber + operator);
         } else {
         }
     };
@@ -115,7 +118,7 @@ public class MainActivity extends AppCompatActivity {
     public View.OnClickListener buttonMultClickListener = v -> {
         if (!firstNumber.equals("") && operator.equals("")) {
             operator = "*";
-            editText.setText(firstNumber + operator);
+            textView.setText(firstNumber + operator);
         } else {
         }
     };
@@ -123,13 +126,13 @@ public class MainActivity extends AppCompatActivity {
     public View.OnClickListener buttonDivClickListener = v -> {
         if (!firstNumber.equals("") && operator.equals("")) {
             operator = "/";
-            editText.setText(firstNumber + operator);
+            textView.setText(firstNumber + operator);
         } else {
         }
     };
 
     public View.OnClickListener buttonCancelClickListener = v -> {
-            editText.setText("");
+            textView.setText("");
             firstNumber = "";
             secondNumber = "";
             operator = "";
@@ -141,14 +144,14 @@ public class MainActivity extends AppCompatActivity {
         if (!secondNumber.equals("")) {
             temp = secondNumber.substring(0, secondNumber.length()-1);
             secondNumber = temp;
-            editText.setText(firstNumber + operator + secondNumber);
+            textView.setText(firstNumber + operator + secondNumber);
         } else if (!operator.equals("")) {
             operator = "";
-            editText.setText(firstNumber);
+            textView.setText(firstNumber);
         } else if (!firstNumber.equals("")) {
             temp = firstNumber.substring(0, firstNumber.length()-1);
             firstNumber = temp;
-            editText.setText(firstNumber);
+            textView.setText(firstNumber);
         }
     };
 
@@ -162,22 +165,22 @@ public class MainActivity extends AppCompatActivity {
             switch (operator) {
                 case "+":
                     result = (Float.toString(fN + sN));
-                    editText.setText(result);
+                    textView.setText(result);
                     firstNumber = result;
                     break;
                 case "-":
                     result = (Float.toString(fN - sN));
-                    editText.setText(result);
+                    textView.setText(result);
                     firstNumber = result;
                     break;
                 case "*":
                     result = (Float.toString(fN * sN));
-                    editText.setText(result);
+                    textView.setText(result);
                     firstNumber = result;
                     break;
                 case "/":
                     result = (Float.toString(fN / sN));
-                    editText.setText(result);
+                    textView.setText(result);
                     firstNumber = result;
                     break;
             }
