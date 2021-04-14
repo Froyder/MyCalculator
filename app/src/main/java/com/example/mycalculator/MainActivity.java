@@ -193,12 +193,16 @@ public class MainActivity extends AppCompatActivity {
         }
     };
     public View.OnClickListener buttonMinusClickListener = v -> {
-        if (!firstNumber.equals("") && operator.equals("")) {
+        if (firstNumber.equals("")) {
+            firstNumber = firstNumber + "-";
+            textView.setText(firstNumber);
+        } else if (!firstNumber.equals("") && operator.equals("")) {
             operator = "-";
             textView.setText(firstNumber + operator);
         } else {
         }
     };
+
     public View.OnClickListener buttonMultClickListener = v -> {
         if (!firstNumber.equals("") && operator.equals("")) {
             operator = "*";
