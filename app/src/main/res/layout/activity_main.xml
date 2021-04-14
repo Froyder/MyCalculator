@@ -10,10 +10,11 @@
         android:id="@+id/imageView1"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:scaleType="fitXY"
         app:srcCompat="@drawable/back" />
 
     <include
-        layout="@layout/interface_main"
+        layout="@layout/constraint_layout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center" />
