@@ -7,17 +7,17 @@
 
     <TextView
         android:id="@+id/textField"
+        android:textAlignment="textEnd"
         android:layout_width="0dp"
         android:layout_height="40dp"
         android:hint="@string/hint"
-        android:inputType="number"
         android:textColor="@color/black"
-        android:textColorHint="#000000"
-        android:textSize="@dimen/button_text_size"
+        android:textColorHint="#737373"
+        android:textSize="@dimen/text_size"
         app:layout_constraintBottom_toTopOf="@id/button_7"
+        app:layout_constraintEnd_toEndOf="@id/button_multiplication"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintEnd_toEndOf="@id/button_multiplication"/>
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/button_7"
@@ -63,7 +63,6 @@
         android:layout_width="@dimen/button_width"
         android:layout_height="@dimen/button_height"
         android:layout_margin="@dimen/button_margin"
-        android:layout_marginRight="2dp"
         android:backgroundTint="@color/special_buttons"
         android:text="@string/button_mult"
         android:textSize="@dimen/button_text_size"

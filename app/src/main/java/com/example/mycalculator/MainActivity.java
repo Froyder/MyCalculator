@@ -81,7 +81,7 @@ public class MainActivity extends AppCompatActivity {
             textView.setText(firstNumber);
         } else {
             secondNumber = secondNumber + "1";
-            textView.setText(firstNumber + operator + secondNumber);
+            textView.setText(String.format("%s%s%s", firstNumber, operator, secondNumber));
         }
     };
 
@@ -91,7 +91,7 @@ public class MainActivity extends AppCompatActivity {
             textView.setText(firstNumber);
         } else {
             secondNumber = secondNumber + "2";
-            textView.setText(firstNumber + operator + secondNumber);
+            textView.setText(String.format("%s%s%s", firstNumber, operator, secondNumber));
         }
     };
 
@@ -101,7 +101,7 @@ public class MainActivity extends AppCompatActivity {
             textView.setText(firstNumber);
         } else {
             secondNumber = secondNumber + "3";
-            textView.setText(firstNumber + operator + secondNumber);
+            textView.setText(String.format("%s%s%s", firstNumber, operator, secondNumber));
         }
     };
 
@@ -111,7 +111,7 @@ public class MainActivity extends AppCompatActivity {
             textView.setText(firstNumber);
         } else {
             secondNumber = secondNumber + "4";
-            textView.setText(firstNumber + operator + secondNumber);
+            textView.setText(String.format("%s%s%s", firstNumber, operator, secondNumber));
         }
     };
 
@@ -121,7 +121,7 @@ public class MainActivity extends AppCompatActivity {
             textView.setText(firstNumber);
         } else {
             secondNumber = secondNumber + "5";
-            textView.setText(firstNumber + operator + secondNumber);
+            textView.setText(String.format("%s%s%s", firstNumber, operator, secondNumber));
         }
     };
 
@@ -131,7 +131,7 @@ public class MainActivity extends AppCompatActivity {
             textView.setText(firstNumber);
         } else {
             secondNumber = secondNumber + "6";
-            textView.setText(firstNumber + operator + secondNumber);
+            textView.setText(String.format("%s%s%s", firstNumber, operator, secondNumber));
         }
     };
 
@@ -141,7 +141,7 @@ public class MainActivity extends AppCompatActivity {
             textView.setText(firstNumber);
         } else {
             secondNumber = secondNumber + "7";
-            textView.setText(firstNumber + operator + secondNumber);
+            textView.setText(String.format("%s%s%s", firstNumber, operator, secondNumber));
         }
     };
 
@@ -151,7 +151,7 @@ public class MainActivity extends AppCompatActivity {
             textView.setText(firstNumber);
         } else {
             secondNumber = secondNumber + "8";
-            textView.setText(firstNumber + operator + secondNumber);
+            textView.setText(String.format("%s%s%s", firstNumber, operator, secondNumber));
         }
     };
 
@@ -161,7 +161,7 @@ public class MainActivity extends AppCompatActivity {
             textView.setText(firstNumber);
         } else {
             secondNumber = secondNumber + "9";
-            textView.setText(firstNumber + operator + secondNumber);
+            textView.setText(String.format("%s%s%s", firstNumber, operator, secondNumber));
         }
     };
 
@@ -171,7 +171,7 @@ public class MainActivity extends AppCompatActivity {
             textView.setText(firstNumber);
         } else {
             secondNumber = secondNumber + "0";
-            textView.setText(firstNumber + operator + secondNumber);
+            textView.setText(String.format("%s%s%s", firstNumber, operator, secondNumber));
         }
     };
 
@@ -181,15 +181,14 @@ public class MainActivity extends AppCompatActivity {
             textView.setText(firstNumber);
         } else {
             secondNumber = secondNumber + ".";
-            textView.setText(firstNumber + operator + secondNumber);
+            textView.setText(String.format("%s%s%s", firstNumber, operator, secondNumber));
         }
     };
 
     public View.OnClickListener buttonPlusClickListener = v -> {
         if (!firstNumber.equals("") && operator.equals("")) {
             operator = "+";
-            textView.setText(firstNumber + operator);
-        } else {
+            textView.setText(String.format("%s%s", firstNumber, operator));
         }
     };
 
@@ -199,24 +198,21 @@ public class MainActivity extends AppCompatActivity {
             textView.setText(firstNumber);
         } else if (!firstNumber.equals("") && operator.equals("")) {
             operator = "-";
-            textView.setText(firstNumber + operator);
-        } else {
+            textView.setText(String.format("%s%s", firstNumber, operator));
         }
     };
 
     public View.OnClickListener buttonMultClickListener = v -> {
         if (!firstNumber.equals("") && operator.equals("")) {
             operator = "*";
-            textView.setText(firstNumber + operator);
-        } else {
+            textView.setText(String.format("%s%s", firstNumber, operator));
         }
     };
 
     public View.OnClickListener buttonDivClickListener = v -> {
         if (!firstNumber.equals("") && operator.equals("")) {
             operator = "/";
-            textView.setText(firstNumber + operator);
-        } else {
+            textView.setText(String.format("%s%s", firstNumber, operator));
         }
     };
 
@@ -232,7 +228,7 @@ public class MainActivity extends AppCompatActivity {
         if (!secondNumber.equals("")) {
             temp = secondNumber.substring(0, secondNumber.length() - 1);
             secondNumber = temp;
-            textView.setText(firstNumber + operator + secondNumber);
+            textView.setText(String.format("%s%s%s", firstNumber, operator, secondNumber));
         } else if (!operator.equals("")) {
             operator = "";
             textView.setText(firstNumber);
