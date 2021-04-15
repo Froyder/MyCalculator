@@ -3,7 +3,6 @@ package com.example.mycalculator;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -185,6 +184,7 @@ public class MainActivity extends AppCompatActivity {
             textView.setText(firstNumber + operator + secondNumber);
         }
     };
+
     public View.OnClickListener buttonPlusClickListener = v -> {
         if (!firstNumber.equals("") && operator.equals("")) {
             operator = "+";
@@ -192,6 +192,7 @@ public class MainActivity extends AppCompatActivity {
         } else {
         }
     };
+
     public View.OnClickListener buttonMinusClickListener = v -> {
         if (firstNumber.equals("")) {
             firstNumber = firstNumber + "-";
@@ -210,6 +211,7 @@ public class MainActivity extends AppCompatActivity {
         } else {
         }
     };
+
     public View.OnClickListener buttonDivClickListener = v -> {
         if (!firstNumber.equals("") && operator.equals("")) {
             operator = "/";
@@ -217,15 +219,16 @@ public class MainActivity extends AppCompatActivity {
         } else {
         }
     };
+
     public View.OnClickListener buttonCancelClickListener = v -> {
         textView.setText("");
         firstNumber = "";
         secondNumber = "";
         operator = "";
     };
+
     public View.OnClickListener buttonDeleteClickListener = v -> {
         String temp;
-
         if (!secondNumber.equals("")) {
             temp = secondNumber.substring(0, secondNumber.length() - 1);
             secondNumber = temp;
@@ -239,8 +242,8 @@ public class MainActivity extends AppCompatActivity {
             textView.setText(firstNumber);
         }
     };
-    public View.OnClickListener buttonEqlsClickListener = v -> {
 
+    public View.OnClickListener buttonEqlsClickListener = v -> {
         if (!firstNumber.equals("") && !operator.equals("") && !secondNumber.equals("")) {
             float fN = Float.parseFloat(firstNumber);
             float sN = Float.parseFloat(secondNumber);
