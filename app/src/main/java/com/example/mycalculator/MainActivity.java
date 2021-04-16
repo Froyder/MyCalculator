@@ -4,7 +4,7 @@ import android.os.Bundle;
 
 import java.util.Objects;
 
-public class MainActivity extends Calculations {
+public class MainActivity extends Calculator {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
