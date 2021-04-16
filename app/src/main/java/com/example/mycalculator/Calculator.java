@@ -157,13 +157,16 @@ public class Calculator extends AppCompatActivity {
     };
 
     public View.OnClickListener buttonDotClickListener = v -> {
-
             if (operator.equals("")) {
-                firstNumber = firstNumber + ".";
-                textView.setText(firstNumber);
+                if (!firstNumber.contains(".")) {
+                    firstNumber = firstNumber + ".";
+                    textView.setText(firstNumber);
+                }
             } else {
-                secondNumber = secondNumber + ".";
-                textView.setText(String.format("%s%s%s", firstNumber, operator, secondNumber));
+                if (!secondNumber.contains(".")) {
+                    secondNumber = secondNumber + ".";
+                    textView.setText(String.format("%s%s%s", firstNumber, operator, secondNumber));
+                }
             }
     };
 
