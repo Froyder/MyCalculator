@@ -1,5 +1,6 @@
 package com.example.mycalculator;
 
+import android.media.VolumeShaper;
 import android.view.View;
 import android.widget.TextView;
 
@@ -156,13 +157,14 @@ public class Calculator extends AppCompatActivity {
     };
 
     public View.OnClickListener buttonDotClickListener = v -> {
-        if (operator.equals("")) {
-            firstNumber = firstNumber + ".";
-            textView.setText(firstNumber);
-        } else {
-            secondNumber = secondNumber + ".";
-            textView.setText(String.format("%s%s%s", firstNumber, operator, secondNumber));
-        }
+
+            if (operator.equals("")) {
+                firstNumber = firstNumber + ".";
+                textView.setText(firstNumber);
+            } else {
+                secondNumber = secondNumber + ".";
+                textView.setText(String.format("%s%s%s", firstNumber, operator, secondNumber));
+            }
     };
 
     public View.OnClickListener buttonCancelClickListener = v -> {
@@ -192,38 +194,15 @@ public class Calculator extends AppCompatActivity {
         if (!firstNumber.equals("") && !operator.equals("") && !secondNumber.equals("")) {
             float fN = Float.parseFloat(firstNumber);
             float sN = Float.parseFloat(secondNumber);
-            String result;
-            switch (operator) {
-                case "+":
-                    result = (Float.toString(fN + sN));
-                    textView.setText(result);
-                    firstNumber = result;
-                    break;
-                case "-":
-                    result = (Float.toString(fN - sN));
-                    textView.setText(result);
-                    firstNumber = result;
-                    break;
-                case "*":
-                    result = (Float.toString(fN * sN));
-                    textView.setText(result);
-                    firstNumber = result;
-                    break;
-                case "/":
-                    if (sN == 0) {
-                        textView.setText("На ноль делить нельзя!");
-                        firstNumber = "";
-                        break;
-                    } else {
-                        result = (Float.toString(fN / sN));
-                        textView.setText(result);
-                        firstNumber = result;
-                        break;
-                    }
-            }
+            String result = Operations.getResult(fN, operator, sN);
+
+            textView.setText(result);
+
+            if (!result.equals("На ноль делить нельзя!")) {
+                firstNumber = result;
+                operator = "";
+            } secondNumber = "";
         }
-        secondNumber = "";
-        operator = "";
     };
 
 }
