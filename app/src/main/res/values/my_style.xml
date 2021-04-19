@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="buttonsMain" parent="Widget.MaterialComponents.Button">
+        <item name= "android:backgroundTint">@color/main_buttons</item>
+        <item name="android:textSize">@dimen/button_text_size</item>
+        <item name="android:layout_margin">@dimen/button_margin</item>
+        <item name="android:layout_width">@dimen/button_width</item>
+        <item name="android:layout_height">@dimen/button_height</item>
+    </style>
+
+    <style name="buttonsSpecial" parent="Widget.MaterialComponents.Button">
+        <item name="android:backgroundTint">@color/special_buttons</item>
+        <item name="android:textSize">@dimen/button_text_size</item>
+        <item name="android:layout_margin">@dimen/button_margin</item>
+        <item name="android:layout_width">@dimen/button_width</item>
+        <item name="android:layout_height">@dimen/button_height</item>
+    </style>
+
+
+</resources>

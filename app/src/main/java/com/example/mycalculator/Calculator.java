@@ -1,6 +1,5 @@
 package com.example.mycalculator;
 
-import android.media.VolumeShaper;
 import android.view.View;
 import android.widget.TextView;
 
@@ -201,7 +200,7 @@ public class Calculator extends AppCompatActivity {
 
             textView.setText(result);
 
-            if (!result.equals("На ноль делить нельзя!")) {
+            if (!result.equals("Деление на ноль!")) {
                 firstNumber = result;
                 operator = "";
             } secondNumber = "";

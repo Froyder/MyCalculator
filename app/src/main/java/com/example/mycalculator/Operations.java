@@ -12,7 +12,7 @@ public class Operations {
                 return (Float.toString(fN * sN));
             case "/":
                 if (sN == 0) {
-                    return ("На ноль делить нельзя!");
+                    return ("Деление на ноль!");
                 } else {
                     return (Float.toString(fN / sN));
                 }
