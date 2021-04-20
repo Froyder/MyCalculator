@@ -18,8 +18,6 @@ import java.util.Objects;
 
 public class MainActivity extends Calculator {
 
-
-
     @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
