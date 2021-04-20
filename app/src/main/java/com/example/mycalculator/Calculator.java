@@ -1,5 +1,6 @@
 package com.example.mycalculator;
 
+import android.content.SharedPreferences;
 import android.view.View;
 import android.widget.TextView;
 
@@ -29,7 +30,11 @@ public class Calculator extends AppCompatActivity {
         findViewById(R.id.button_dot).setOnClickListener(buttonDotClickListener);
         findViewById(R.id.button_delete).setOnClickListener(buttonDeleteClickListener);
         findViewById(R.id.button_eqls).setOnClickListener(buttonEqlsClickListener);
+
+
+
     }
+
 
     private void setNumberButtonListeners() {
         for (int i = 0; i < numberButtonIds.length; i++) {

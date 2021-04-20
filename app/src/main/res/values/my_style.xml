@@ -1,8 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+    <style name="textField" parent="Widget.MaterialComponents.TextView">
+        <item name="android:backgroundTint">@color/light_back</item>
+    </style>
+
+    <style name="textField_dark" parent="Widget.MaterialComponents.TextView">
+        <item name="android:backgroundTint">@color/black</item>
+    </style>
+
+    <style name="changeButton" parent="Widget.MaterialComponents.Button">
+        <item name="android:backgroundTint">@color/main_buttons_dark</item>
+        <item name="android:textSize">@dimen/change_button_text_size</item>
+        <item name="android:layout_height">@dimen/button_height</item>
+    </style>
+
     <style name="buttonsMain" parent="Widget.MaterialComponents.Button">
-        <item name= "android:backgroundTint">@color/main_buttons</item>
+        <item name="android:backgroundTint">@color/main_buttons</item>
         <item name="android:textSize">@dimen/button_text_size</item>
         <item name="android:layout_margin">@dimen/button_margin</item>
         <item name="android:layout_width">@dimen/button_width</item>
@@ -17,5 +31,20 @@
         <item name="android:layout_height">@dimen/button_height</item>
     </style>
 
+    <style name="buttonsMainDark" parent="Widget.MaterialComponents.Button">
+        <item name= "android:backgroundTint">@color/main_buttons_dark</item>
+        <item name="android:textSize">@dimen/button_text_size</item>
+        <item name="android:layout_margin">@dimen/button_margin</item>
+        <item name="android:layout_width">@dimen/button_width</item>
+        <item name="android:layout_height">@dimen/button_height</item>
+    </style>
+
+    <style name="buttonsSpecialDark" parent="Widget.MaterialComponents.Button">
+        <item name="android:backgroundTint">@color/special_buttons_dark</item>
+        <item name="android:textSize">@dimen/button_text_size</item>
+        <item name="android:layout_margin">@dimen/button_margin</item>
+        <item name="android:layout_width">@dimen/button_width</item>
+        <item name="android:layout_height">@dimen/button_height</item>
+    </style>
 
 </resources>
