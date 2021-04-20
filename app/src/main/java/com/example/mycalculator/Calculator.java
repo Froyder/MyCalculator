@@ -8,6 +8,9 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class Calculator extends AppCompatActivity {
 
+    private static final int Alt = R.style.Theme_MyCalculatorAlternative;
+    private static final int Dark = R.style.Theme_MyCalculatorDark;
+
     String firstNumber = "", operator = "", secondNumber = "";
     TextView textView;
 
@@ -31,10 +34,24 @@ public class Calculator extends AppCompatActivity {
         findViewById(R.id.button_delete).setOnClickListener(buttonDeleteClickListener);
         findViewById(R.id.button_eqls).setOnClickListener(buttonEqlsClickListener);
 
-
+        findViewById(R.id.theme_button).setOnClickListener(changeTheme);
 
     }
 
+    public View.OnClickListener changeTheme = v -> {
+        SharedPreferences sharedPref = getPreferences(MODE_PRIVATE);
+        if (sharedPref.getInt("Theme", Alt) == Alt) {
+            SharedPreferences.Editor editor = sharedPref.edit();
+            editor.putInt("Theme", Dark);
+            editor.commit();
+            recreate();
+        } else {
+            SharedPreferences.Editor editor = sharedPref.edit();
+            editor.putInt("Theme", Alt);
+            editor.commit();
+            recreate();
+        }
+    };
 
     private void setNumberButtonListeners() {
         for (int i = 0; i < numberButtonIds.length; i++) {

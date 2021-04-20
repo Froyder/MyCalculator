@@ -18,8 +18,6 @@ import java.util.Objects;
 
 public class MainActivity extends Calculator {
 
-    private static final int Alt = R.style.Theme_MyCalculatorAlternative;
-    private static final int Dark = R.style.Theme_MyCalculatorDark;
 
 
     @RequiresApi(api = Build.VERSION_CODES.O)
@@ -28,33 +26,13 @@ public class MainActivity extends Calculator {
         super.onCreate(savedInstanceState);
 
         SharedPreferences sharedPref = getPreferences(MODE_PRIVATE);
-        setTheme(sharedPref.getInt("Theme", Alt));
+        setTheme(sharedPref.getInt("Theme", 1));
 
         setContentView(R.layout.activity_main);
         Objects.requireNonNull(getSupportActionBar()).hide();
 
         initButtons();
 
-        findViewById(R.id.theme_button).setOnClickListener(changeTheme);
-
     }
-
-    public View.OnClickListener changeTheme = v -> {
-
-    //    setTheme(R.style.Theme_MyCalculatorDark);
-        SharedPreferences sharedPref = getPreferences(MODE_PRIVATE);
-
-        if (sharedPref.getInt("Theme", Alt) == Alt) {
-            SharedPreferences.Editor editor = sharedPref.edit();
-            editor.putInt("Theme", Dark);
-            editor.commit();
-            recreate();
-        } else {
-            SharedPreferences.Editor editor = sharedPref.edit();
-            editor.putInt("Theme", Alt);
-            editor.commit();
-            recreate();
-        }
-    };
 
 }
