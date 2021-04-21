@@ -4,6 +4,7 @@ import android.content.SharedPreferences;
 import android.graphics.Typeface;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Parcel;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -25,7 +26,7 @@ public class MainActivity extends Calculator {
 
         SharedPreferences sharedPref = getPreferences(MODE_PRIVATE);
         setTheme(sharedPref.getInt("Theme", 1));
-
+         
         setContentView(R.layout.activity_main);
         Objects.requireNonNull(getSupportActionBar()).hide();
 

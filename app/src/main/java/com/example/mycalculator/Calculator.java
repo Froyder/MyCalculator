@@ -35,7 +35,6 @@ public class Calculator extends AppCompatActivity {
         findViewById(R.id.button_eqls).setOnClickListener(buttonEqlsClickListener);
 
         findViewById(R.id.theme_button).setOnClickListener(changeTheme);
-
     }
 
     public View.OnClickListener changeTheme = v -> {

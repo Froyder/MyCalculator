@@ -1,8 +1,9 @@
 package com.example.mycalculator;
 
-public class Operations {
+public class Operations{
 
     public static String getResult (float fN, String operator, float sN) {
+
         switch (operator) {
             case "+":
                 return (Float.toString(fN + sN));
