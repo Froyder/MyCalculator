@@ -219,6 +219,11 @@ public class Calculator extends AppCompatActivity {
             float sN = Float.parseFloat(secondNumber);
             String result = Operations.getResult(fN, operator, sN);
 
+            if (result.endsWith(".0")) {
+                String temp = result.substring(0, result.length() - 2);
+                result = temp;
+            }
+
             textView.setText(result);
 
             if (!result.equals("Деление на ноль!")) {
