@@ -14,7 +14,7 @@ public class Calculator extends AppCompatActivity {
     String firstNumber = "", operator = "", secondNumber = "";
     TextView textView;
 
-    int [] numberButtonIds;
+    int[] numberButtonIds;
 
     void initButtons() {
 
@@ -61,87 +61,12 @@ public class Calculator extends AppCompatActivity {
 
     private void onNumberClick(int index) {
         String strIndex = String.valueOf(index);
-        switch (strIndex) {
-            case ("0"):
-                if (operator.equals("")) {
-                    firstNumber = firstNumber + "0";
-                    textView.setText(firstNumber);
-                } else {
-                    secondNumber = secondNumber + "0";
-                    textView.setText(String.format("%s%s%s", firstNumber, operator, secondNumber));
-                } break;
-            case ("1"):
-                if (operator.equals("")) {
-                    firstNumber = firstNumber + "1";
-                    textView.setText(firstNumber);
-                } else {
-                    secondNumber = secondNumber + "1";
-                    textView.setText(String.format("%s%s%s", firstNumber, operator, secondNumber));
-                } break;
-            case ("2"):
-                if (operator.equals("")) {
-                    firstNumber = firstNumber + "2";
-                    textView.setText(firstNumber);
-                } else {
-                    secondNumber = secondNumber + "2";
-                    textView.setText(String.format("%s%s%s", firstNumber, operator, secondNumber));
-                } break;
-            case ("3"):
-                if (operator.equals("")) {
-                    firstNumber = firstNumber + "3";
-                    textView.setText(firstNumber);
-                } else {
-                    secondNumber = secondNumber + "3";
-                    textView.setText(String.format("%s%s%s", firstNumber, operator, secondNumber));
-                } break;
-            case ("4"):
-                if (operator.equals("")) {
-                    firstNumber = firstNumber + "4";
-                    textView.setText(firstNumber);
-                } else {
-                    secondNumber = secondNumber + "4";
-                    textView.setText(String.format("%s%s%s", firstNumber, operator, secondNumber));
-                } break;
-            case ("5"):
-                if (operator.equals("")) {
-                    firstNumber = firstNumber + "5";
-                    textView.setText(firstNumber);
-                } else {
-                    secondNumber = secondNumber + "5";
-                    textView.setText(String.format("%s%s%s", firstNumber, operator, secondNumber));
-                } break;
-            case ("6"):
-                if (operator.equals("")) {
-                    firstNumber = firstNumber + "6";
-                    textView.setText(firstNumber);
-                } else {
-                    secondNumber = secondNumber + "6";
-                    textView.setText(String.format("%s%s%s", firstNumber, operator, secondNumber));
-                } break;
-            case ("7"):
-                if (operator.equals("")) {
-                    firstNumber = firstNumber + "7";
-                    textView.setText(firstNumber);
-                } else {
-                    secondNumber = secondNumber + "7";
-                    textView.setText(String.format("%s%s%s", firstNumber, operator, secondNumber));
-                } break;
-            case ("8"):
-                if (operator.equals("")) {
-                    firstNumber = firstNumber + "8";
-                    textView.setText(firstNumber);
-                } else {
-                    secondNumber = secondNumber + "8";
-                    textView.setText(String.format("%s%s%s", firstNumber, operator, secondNumber));
-                } break;
-            case ("9"):
-                if (operator.equals("")) {
-                    firstNumber = firstNumber + "9";
-                    textView.setText(firstNumber);
-                } else {
-                    secondNumber = secondNumber + "9";
-                    textView.setText(String.format("%s%s%s", firstNumber, operator, secondNumber));
-                } break;
+        if (operator.equals("")) {
+            firstNumber = firstNumber + strIndex;
+            textView.setText(firstNumber);
+        } else {
+            secondNumber = secondNumber + strIndex;
+            textView.setText(String.format("%s%s%s", firstNumber, operator, secondNumber));
         }
     }
 
@@ -177,17 +102,17 @@ public class Calculator extends AppCompatActivity {
     };
 
     public View.OnClickListener buttonDotClickListener = v -> {
-            if (operator.equals("")) {
-                if (!firstNumber.contains(".")) {
-                    firstNumber = firstNumber + ".";
-                    textView.setText(firstNumber);
-                }
-            } else {
-                if (!secondNumber.contains(".")) {
-                    secondNumber = secondNumber + ".";
-                    textView.setText(String.format("%s%s%s", firstNumber, operator, secondNumber));
-                }
+        if (operator.equals("")) {
+            if (!firstNumber.contains(".")) {
+                firstNumber = firstNumber + ".";
+                textView.setText(firstNumber);
             }
+        } else {
+            if (!secondNumber.contains(".")) {
+                secondNumber = secondNumber + ".";
+                textView.setText(String.format("%s%s%s", firstNumber, operator, secondNumber));
+            }
+        }
     };
 
     public View.OnClickListener buttonCancelClickListener = v -> {
@@ -220,8 +145,7 @@ public class Calculator extends AppCompatActivity {
             String result = Operations.getResult(fN, operator, sN);
 
             if (result.endsWith(".0")) {
-                String temp = result.substring(0, result.length() - 2);
-                result = temp;
+                result = result.substring(0, result.length() - 2);
             }
 
             textView.setText(result);
@@ -229,7 +153,8 @@ public class Calculator extends AppCompatActivity {
             if (!result.equals("Деление на ноль!")) {
                 firstNumber = result;
                 operator = "";
-            } secondNumber = "";
+            }
+            secondNumber = "";
         }
     };
 
