@@ -168,7 +168,6 @@
     <com.google.android.material.button.MaterialButton
         android:id="@+id/button_eqls"
         android:layout_width="0dp"
-        android:layout_margin="@dimen/button_margin"
         android:text="@string/button_eql"
         app:layout_constraintStart_toEndOf="@+id/button_delete"
         app:layout_constraintTop_toBottomOf="@id/button_0"
@@ -177,13 +176,14 @@
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/theme_button"
-        android:layout_margin="50dp"
+        style="@style/changeButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_margin="30dp"
         android:text="@string/theme_button"
-        app:layout_constraintTop_toBottomOf="@id/button_delete"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        style="@style/changeButton"/>
+        app:layout_constraintStart_toEndOf="@id/button_plus"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

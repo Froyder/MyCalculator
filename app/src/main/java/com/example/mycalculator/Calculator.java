@@ -1,6 +1,6 @@
 package com.example.mycalculator;
 
-import android.media.VolumeShaper;
+import android.content.SharedPreferences;
 import android.view.View;
 import android.widget.TextView;
 
@@ -8,10 +8,13 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class Calculator extends AppCompatActivity {
 
+    private static final int Alt = R.style.Theme_MyCalculatorAlternative;
+    private static final int Dark = R.style.Theme_MyCalculatorDark;
+
     String firstNumber = "", operator = "", secondNumber = "";
     TextView textView;
 
-    int [] numberButtonIds;
+    int[] numberButtonIds;
 
     void initButtons() {
 
@@ -30,7 +33,24 @@ public class Calculator extends AppCompatActivity {
         findViewById(R.id.button_dot).setOnClickListener(buttonDotClickListener);
         findViewById(R.id.button_delete).setOnClickListener(buttonDeleteClickListener);
         findViewById(R.id.button_eqls).setOnClickListener(buttonEqlsClickListener);
+
+        findViewById(R.id.theme_button).setOnClickListener(changeTheme);
     }
+
+    public View.OnClickListener changeTheme = v -> {
+        SharedPreferences sharedPref = getPreferences(MODE_PRIVATE);
+        if (sharedPref.getInt("Theme", Alt) == Alt) {
+            SharedPreferences.Editor editor = sharedPref.edit();
+            editor.putInt("Theme", Dark);
+            editor.commit();
+            recreate();
+        } else {
+            SharedPreferences.Editor editor = sharedPref.edit();
+            editor.putInt("Theme", Alt);
+            editor.commit();
+            recreate();
+        }
+    };
 
     private void setNumberButtonListeners() {
         for (int i = 0; i < numberButtonIds.length; i++) {
@@ -41,87 +61,12 @@ public class Calculator extends AppCompatActivity {
 
     private void onNumberClick(int index) {
         String strIndex = String.valueOf(index);
-        switch (strIndex) {
-            case ("0"):
-                if (operator.equals("")) {
-                    firstNumber = firstNumber + "0";
-                    textView.setText(firstNumber);
-                } else {
-                    secondNumber = secondNumber + "0";
-                    textView.setText(String.format("%s%s%s", firstNumber, operator, secondNumber));
-                } break;
-            case ("1"):
-                if (operator.equals("")) {
-                    firstNumber = firstNumber + "1";
-                    textView.setText(firstNumber);
-                } else {
-                    secondNumber = secondNumber + "1";
-                    textView.setText(String.format("%s%s%s", firstNumber, operator, secondNumber));
-                } break;
-            case ("2"):
-                if (operator.equals("")) {
-                    firstNumber = firstNumber + "2";
-                    textView.setText(firstNumber);
-                } else {
-                    secondNumber = secondNumber + "2";
-                    textView.setText(String.format("%s%s%s", firstNumber, operator, secondNumber));
-                } break;
-            case ("3"):
-                if (operator.equals("")) {
-                    firstNumber = firstNumber + "3";
-                    textView.setText(firstNumber);
-                } else {
-                    secondNumber = secondNumber + "3";
-                    textView.setText(String.format("%s%s%s", firstNumber, operator, secondNumber));
-                } break;
-            case ("4"):
-                if (operator.equals("")) {
-                    firstNumber = firstNumber + "4";
-                    textView.setText(firstNumber);
-                } else {
-                    secondNumber = secondNumber + "4";
-                    textView.setText(String.format("%s%s%s", firstNumber, operator, secondNumber));
-                } break;
-            case ("5"):
-                if (operator.equals("")) {
-                    firstNumber = firstNumber + "5";
-                    textView.setText(firstNumber);
-                } else {
-                    secondNumber = secondNumber + "5";
-                    textView.setText(String.format("%s%s%s", firstNumber, operator, secondNumber));
-                } break;
-            case ("6"):
-                if (operator.equals("")) {
-                    firstNumber = firstNumber + "6";
-                    textView.setText(firstNumber);
-                } else {
-                    secondNumber = secondNumber + "6";
-                    textView.setText(String.format("%s%s%s", firstNumber, operator, secondNumber));
-                } break;
-            case ("7"):
-                if (operator.equals("")) {
-                    firstNumber = firstNumber + "7";
-                    textView.setText(firstNumber);
-                } else {
-                    secondNumber = secondNumber + "7";
-                    textView.setText(String.format("%s%s%s", firstNumber, operator, secondNumber));
-                } break;
-            case ("8"):
-                if (operator.equals("")) {
-                    firstNumber = firstNumber + "8";
-                    textView.setText(firstNumber);
-                } else {
-                    secondNumber = secondNumber + "8";
-                    textView.setText(String.format("%s%s%s", firstNumber, operator, secondNumber));
-                } break;
-            case ("9"):
-                if (operator.equals("")) {
-                    firstNumber = firstNumber + "9";
-                    textView.setText(firstNumber);
-                } else {
-                    secondNumber = secondNumber + "9";
-                    textView.setText(String.format("%s%s%s", firstNumber, operator, secondNumber));
-                } break;
+        if (operator.equals("")) {
+            firstNumber = firstNumber + strIndex;
+            textView.setText(firstNumber);
+        } else {
+            secondNumber = secondNumber + strIndex;
+            textView.setText(String.format("%s%s%s", firstNumber, operator, secondNumber));
         }
     }
 
@@ -157,17 +102,17 @@ public class Calculator extends AppCompatActivity {
     };
 
     public View.OnClickListener buttonDotClickListener = v -> {
-            if (operator.equals("")) {
-                if (!firstNumber.contains(".")) {
-                    firstNumber = firstNumber + ".";
-                    textView.setText(firstNumber);
-                }
-            } else {
-                if (!secondNumber.contains(".")) {
-                    secondNumber = secondNumber + ".";
-                    textView.setText(String.format("%s%s%s", firstNumber, operator, secondNumber));
-                }
+        if (operator.equals("")) {
+            if (!firstNumber.contains(".")) {
+                firstNumber = firstNumber + ".";
+                textView.setText(firstNumber);
             }
+        } else {
+            if (!secondNumber.contains(".")) {
+                secondNumber = secondNumber + ".";
+                textView.setText(String.format("%s%s%s", firstNumber, operator, secondNumber));
+            }
+        }
     };
 
     public View.OnClickListener buttonCancelClickListener = v -> {
@@ -199,12 +144,17 @@ public class Calculator extends AppCompatActivity {
             float sN = Float.parseFloat(secondNumber);
             String result = Operations.getResult(fN, operator, sN);
 
+            if (result.endsWith(".0")) {
+                result = result.substring(0, result.length() - 2);
+            }
+
             textView.setText(result);
 
-            if (!result.equals("На ноль делить нельзя!")) {
+            if (!result.equals("Деление на ноль!")) {
                 firstNumber = result;
                 operator = "";
-            } secondNumber = "";
+            }
+            secondNumber = "";
         }
     };
 
