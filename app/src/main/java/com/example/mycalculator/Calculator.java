@@ -1,5 +1,6 @@
 package com.example.mycalculator;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.view.View;
 import android.widget.TextView;
@@ -9,9 +10,9 @@ import androidx.appcompat.app.AppCompatActivity;
 public class Calculator extends AppCompatActivity {
 
     private static final int Alt = R.style.Theme_MyCalculatorAlternative;
-    private static final int Dark = R.style.Theme_MyCalculatorDark;
+    private static final int Dark = R.style.Theme_MyCalculatorDark;;
 
-    String firstNumber = "", operator = "", secondNumber = "";
+    String firstNumber = "", operator = "", secondNumber = "", result = "";
     TextView textView;
 
     int[] numberButtonIds;
@@ -35,7 +36,15 @@ public class Calculator extends AppCompatActivity {
         findViewById(R.id.button_eqls).setOnClickListener(buttonEqlsClickListener);
 
         findViewById(R.id.theme_button).setOnClickListener(changeTheme);
+        findViewById(R.id.return_button).setOnClickListener(returnListener);
     }
+
+    public View.OnClickListener returnListener = v -> {
+        Intent intent = new Intent();
+        intent.putExtra("NEW_NUMBER", result);
+        setResult(RESULT_OK, intent);
+        finish();
+    };
 
     public View.OnClickListener changeTheme = v -> {
         SharedPreferences sharedPref = getPreferences(MODE_PRIVATE);
@@ -142,7 +151,7 @@ public class Calculator extends AppCompatActivity {
         if (!firstNumber.equals("") && !operator.equals("") && !secondNumber.equals("")) {
             float fN = Float.parseFloat(firstNumber);
             float sN = Float.parseFloat(secondNumber);
-            String result = Operations.getResult(fN, operator, sN);
+            result = Operations.getResult(fN, operator, sN);
 
             if (result.endsWith(".0")) {
                 result = result.substring(0, result.length() - 2);

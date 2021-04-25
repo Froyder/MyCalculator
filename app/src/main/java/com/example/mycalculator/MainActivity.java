@@ -1,5 +1,6 @@
 package com.example.mycalculator;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Typeface;
 import android.os.Build;
@@ -16,6 +17,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import org.w3c.dom.Text;
 
 import java.util.Objects;
+
 
 public class MainActivity extends Calculator {
 
