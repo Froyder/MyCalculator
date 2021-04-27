@@ -42,12 +42,12 @@ public class Calculator extends AppCompatActivity {
         if (sharedPref.getInt("Theme", Alt) == Alt) {
             SharedPreferences.Editor editor = sharedPref.edit();
             editor.putInt("Theme", Dark);
-            editor.commit();
+            editor.apply();
             recreate();
         } else {
             SharedPreferences.Editor editor = sharedPref.edit();
             editor.putInt("Theme", Alt);
-            editor.commit();
+            editor.apply();
             recreate();
         }
     };
